@@ -1,0 +1,292 @@
+:root{
+  --green:#087d50;--deep:#07543f;--leaf:#4eaa43;--mint:#e8f5eb;--sky:#e9f6fa;
+  --ink:#183f35;--muted:#78958a;--gold:#efa14a;--paper:#fffefa;--line:#dcebe2;
+  font-family:Inter,"Segoe UI",Arial,sans-serif;color:var(--ink);background:#f3f8f5
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;}
+body{min-height:100vh;overflow-x:hidden;background:radial-gradient(ellipse at 4% 12%,#d9f1df 0,transparent 26%),radial-gradient(ellipse at 96% 80%,#d9eff8 0,transparent 28%),linear-gradient(135deg,#f8fbf8,#edf7f4)}
+button{font:inherit;cursor:pointer}
+.app-shell{width:min(1600px,100%);height:100vh;min-height:650px;margin:auto;padding:10px 20px 6px;display:flex;flex-direction:column;overflow:hidden}
+.topbar{height:62px;flex:0 0 62px;display:flex;align-items:center;gap:18px;padding:0 10px 8px;border-bottom:1px solid #dcebe3}
+.brand{display:flex;align-items:center;min-width:0}.brand img{width:178px;max-height:48px;object-fit:contain;object-position:left center}
+.header-title{margin-left:auto;display:flex;flex-direction:column;gap:4px;text-align:right;color:var(--deep);letter-spacing:.15em;font-size:10px}
+.header-title span{font-size:8px;color:#78978b;letter-spacing:.19em}
+.top-actions{display:flex;gap:8px;margin-left:8px}
+.round-control{width:40px;height:40px;border:1px solid #d4e8db;border-radius:50%;background:#fff;color:var(--deep);font-size:21px;box-shadow:0 4px 13px #174c3210;transition:.2s}
+.round-control:hover,.round-control[aria-pressed="true"]{background:#e6f5e9;border-color:#9ccbaa;transform:translateY(-2px)}
+.install-control{font-size:25px;font-weight:400}
+.calendar-layout{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:15px;padding:12px 0 7px}
+.viewer{min-width:0;min-height:0;display:flex;align-items:stretch}
+.calendar-card{width:100%;height:100%;min-height:0;position:relative;overflow:hidden;border:1px solid #e0ece4;border-radius:20px;background:var(--paper);box-shadow:0 12px 38px #1c50331b;animation:card-enter .4s ease}
+@keyframes card-enter{from{opacity:.65;transform:translateY(6px)}to{opacity:1;transform:none}}
+.cover-page{height:100%;min-height:0;position:relative;display:grid;grid-template-columns:54% 46%;overflow:hidden;background:linear-gradient(125deg,#f4fbf2,#fff 53%,#eff9f7)}
+.cover-art-panel{position:relative;overflow:hidden;min-height:0;background:#dff1e4}
+.cover-art-panel img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;animation:cover-pan 22s ease-in-out infinite alternate;transform-origin:center}
+@keyframes cover-pan{from{transform:scale(1.02) translateX(-.4%)}to{transform:scale(1.12) translateX(1.5%)}}
+.cover-art-panel:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 70%,#f9fcf7 100%);pointer-events:none}
+.art-glow{position:absolute;inset:-30%;background:linear-gradient(110deg,transparent 42%,#ffffff30 50%,transparent 58%);transform:translateX(-100%);animation:cover-shine 13s ease-in-out infinite;pointer-events:none}
+@keyframes cover-shine{0%,35%{transform:translateX(-100%)}70%,100%{transform:translateX(100%)}}
+.cover-copy-panel{position:relative;z-index:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:38px clamp(22px,3.4vw,52px) 30px 12px}
+.cover-year{position:absolute;right:32px;top:20px;font:italic 42px Georgia,serif;color:#16834d}
+.eyebrow{margin:0 0 9px;color:var(--green);font-size:9px;font-weight:850;letter-spacing:.19em}
+.cover-copy-panel h1{font:700 clamp(38px,4.8vw,68px)/.98 Georgia,serif;color:#075b43;letter-spacing:-.05em;margin:0 0 17px}
+.cover-copy-panel h1 em{display:block;color:#ed7d20;font-weight:400}
+.title-accent{height:5px;width:82px;border-radius:8px;background:linear-gradient(90deg,#60b948,#efb44d,#38a9a0);margin:0 0 18px}
+.cover-copy-panel h2{font:700 clamp(18px,2vw,26px) Georgia,serif;color:#155c48;margin:0 0 8px}
+.cover-theme{font:italic 16px Georgia,serif;color:#315e4e;margin:0 0 10px}
+.cover-description{font-size:11px;line-height:1.55;color:#759087;max-width:350px;margin:0 0 20px}
+.primary-btn{border:0;border-radius:26px;padding:11px 22px;background:linear-gradient(110deg,#07854e,#00643e);color:#fff;font-size:13px;font-weight:750;box-shadow:0 7px 17px #087d5033;transition:.2s}
+.primary-btn span{font-size:19px;margin-left:12px}.primary-btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px #087d5040}
+.cover-install-link{border:0;background:transparent;color:#26764c;font-size:10px;font-weight:700;padding:12px 2px 0;text-decoration:underline;text-underline-offset:3px}
+.cover-leaf{position:absolute;z-index:2;color:#77ba55;opacity:.65;pointer-events:none}.leaf-a{font-size:40px;right:5%;bottom:8%;animation:leaf-float 7s ease-in-out infinite}.leaf-b{font-size:24px;left:48%;top:8%;animation:leaf-float 9s ease-in-out infinite reverse}
+@keyframes leaf-float{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-12px) rotate(12deg)}}
+.month-sidebar{min-width:0;display:flex;flex-direction:column;padding:12px 11px 10px;border:1px solid #e0ece4;border-radius:20px;background:#ffffffdf;box-shadow:0 12px 35px #1c503317;min-height:0;overflow:hidden}
+.sidebar-heading{display:flex;align-items:center;gap:10px;padding:11px 13px;margin-bottom:10px;border-radius:12px;background:linear-gradient(110deg,#178a49,#00663d);color:white;font-size:18px;box-shadow:0 5px 13px #0c75402a}
+.sidebar-calendar-icon{font-size:23px}.month-navigation{display:flex;flex-direction:column;gap:6px;flex:1;min-height:0}
+.month-tab{width:100%;min-height:34px;display:flex;align-items:center;gap:10px;text-align:left;padding:6px 11px;border:1px solid #a9d0ac;border-radius:11px;background:#fff;color:#174c31;font-weight:700;font-size:12px;transition:background .2s,border .2s,transform .2s,box-shadow .2s}
+.month-tab:hover{background:#eef8ed;transform:translateX(2px);box-shadow:0 4px 12px #1c7b3212}.month-tab.active{background:linear-gradient(100deg,#28a92c,#078043);color:white;border-color:#128644;box-shadow:0 5px 12px #148a3a2a}
+.tab-icon{width:19px;text-align:center;font-size:17px;color:#54a947}.month-tab.active .tab-icon{color:white}
+.sidebar-bottom{border-top:1px solid #e0eee5;margin-top:9px;padding:9px 3px 0;display:flex;flex-direction:column;align-items:center;gap:4px;color:#8ba399;font-size:7px;letter-spacing:.15em;text-align:center}
+.sidebar-year{font:italic 22px Georgia;color:#14804b;letter-spacing:0}.sidebar-install{margin-top:5px;border:1px solid #b8d8c2;border-radius:16px;padding:6px 13px;background:#f2faf4;color:#1c7546;font-size:9px;font-weight:800}
+.sound-note{text-align:center;font-size:9px;color:#82998f;margin:0 0 4px;min-height:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.site-footer{text-align:center;border-top:1px solid #deebe4;padding:5px 0 0;color:#93a79d;font-size:8px;flex:0 0 17px}
+
+/* Each month is deliberately arranged to fit in the visible calendar card. */
+.month-page{height:100%;min-height:0;padding:14px 24px 10px;display:flex;flex-direction:column;overflow:hidden;background:linear-gradient(135deg,#fffefa,#f5fbf6)}
+.month-page-header{display:flex;justify-content:space-between;align-items:center;padding-bottom:8px;border-bottom:1px solid var(--line);flex:0 0 auto}
+.month-page-header .eyebrow{font-size:8px;margin-bottom:4px}.month-page-header h1{font:700 clamp(28px,3vw,39px) Georgia,serif;color:#075b43;margin:0}.month-page-header h1 small{font:400 17px Arial;color:#7eaa98;margin-left:6px}
+.month-mark{display:flex;flex-direction:column;align-items:flex-end;font:italic 24px Georgia;color:#17834e}.month-mark span{font:800 7px Arial;letter-spacing:.18em;color:#8aa99b}
+.month-feature{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(210px,.8fr);gap:13px;margin:10px 0 9px;min-height:0;flex:0 0 205px}
+.artwork-frame{height:205px;min-height:0;position:relative;overflow:hidden;border:6px solid white;border-radius:12px;background:linear-gradient(135deg,#d9f1e2,#d9eef7);box-shadow:0 6px 20px #214e3718;isolation:isolate}
+.artwork-frame img{display:none;width:100%;height:100%;object-fit:contain;position:relative;z-index:1;transform-origin:center;will-change:transform}.artwork-frame.has-image img{display:block}
+.artwork-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:7px;text-align:center;color:#39796a;background:radial-gradient(circle at 18% 20%,#ffffffb8 0 12%,transparent 28%),radial-gradient(circle at 80% 80%,#ffffffb8 0 12%,transparent 28%)}
+.artwork-placeholder[hidden]{display:none}.placeholder-leaf{font-size:32px;color:#e6a64a;animation:leaf-float 4s ease-in-out infinite}.artwork-placeholder strong{font:700 21px Georgia,serif}.artwork-placeholder span{font-size:11px}.artwork-placeholder small{font-size:9px;color:#70998d}
+.artwork-label{position:absolute;z-index:4;left:0;right:0;bottom:0;display:flex;justify-content:space-between;gap:8px;padding:7px 9px;background:#064a39dd;color:white;font-size:7px;letter-spacing:.1em}
+.artwork-shimmer{position:absolute;z-index:3;inset:-30%;pointer-events:none;background:linear-gradient(110deg,transparent 42%,#ffffff35 50%,transparent 58%);transform:translateX(-100%);animation:art-shimmer 14s ease-in-out infinite}@keyframes art-shimmer{0%,40%{transform:translateX(-100%)}75%,100%{transform:translateX(100%)}}
+.artwork-frame:before{content:"";position:absolute;z-index:2;width:100px;height:100px;border-radius:50%;top:-42px;right:-30px;background:#ffffff35;filter:blur(8px);animation:glow-drift 8s ease-in-out infinite alternate;pointer-events:none}@keyframes glow-drift{from{transform:translate(-20px,5px) scale(.8)}to{transform:translate(12px,25px) scale(1.25)}}
+.motion-drift img{animation:art-drift 17s ease-in-out infinite alternate}@keyframes art-drift{from{transform:scale(1.015) translate(-.5%,0)}to{transform:scale(1.10) translate(.7%,-.7%)}}
+.motion-float img{animation:art-float 12s ease-in-out infinite alternate}@keyframes art-float{from{transform:scale(1.04) translateY(1%)}to{transform:scale(1.08) translateY(-1.4%)}}
+.motion-sway img{animation:art-sway 14s ease-in-out infinite alternate}@keyframes art-sway{from{transform:scale(1.04) translateX(-1%)}to{transform:scale(1.08) translateX(1%)}}
+.motion-zoom img{animation:art-zoom 19s ease-in-out infinite alternate}@keyframes art-zoom{from{transform:scale(1)}to{transform:scale(1.13)}}
+.motion-pan img{animation:art-pan 16s ease-in-out infinite alternate}@keyframes art-pan{from{transform:scale(1.08) translateX(1.2%)}to{transform:scale(1.08) translateX(-1.2%)}}
+.artist-panel{border:1px solid #d9eadf;border-radius:12px;padding:11px 13px;background:linear-gradient(145deg,#f0f8f0,#f7fbf7);display:flex;flex-direction:column;justify-content:center;min-height:0;overflow:hidden}
+.artist-panel>.eyebrow{font-size:7px;line-height:1.35;margin-bottom:5px}.artist-panel h2{font:700 19px/1.08 Georgia,serif;color:#145b46;margin:0 0 7px}
+.artist-info{display:flex;flex-direction:column;gap:2px;border-top:1px solid #dbe9df;padding:5px 0}.artist-info span{font-size:7px;letter-spacing:.14em;color:#7e9b8d}.artist-info strong{font-size:10px;color:#315b49}
+.art-quote{position:relative;margin:6px 0 5px;padding:7px 8px 6px 17px;border-left:2px solid #e7ad57;background:#fff9ed;border-radius:0 7px 7px 0;min-height:0}
+.quote-mark{position:absolute;left:5px;top:2px;font:700 20px Georgia;color:#d99542}.art-quote p{font:italic 10px/1.35 Georgia,serif;color:#456b58;margin:0 0 3px}.art-quote cite{font:700 6px Arial,sans-serif;letter-spacing:.08em;color:#a87942;font-style:normal}
+.music-control-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:3px 0 4px}.month-music-btn{border:1px solid #b9d9c4;border-radius:16px;background:#fff;color:#1b7548;padding:5px 9px;font-size:8px;font-weight:800}.month-music-btn[aria-pressed="true"]{background:#e3f5e8;border-color:#64b47b}.music-caption{font-size:7px;color:#8ba397}
+.motion-indicator{display:flex;align-items:center;gap:5px;color:#438b57;font-size:7px;margin-top:auto}.pulse-dot{width:6px;height:6px;border-radius:50%;background:#36aa58;box-shadow:0 0 0 0 #36aa5860;animation:pulse 1.8s infinite}@keyframes pulse{70%{box-shadow:0 0 0 6px #36aa5800}100%{box-shadow:0 0 0 0 #36aa5800}}
+.dates-panel{border-top:1px solid var(--line);padding-top:7px;flex:1 1 auto;min-height:0;display:flex;flex-direction:column;overflow:hidden}
+.dates-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;flex:0 0 auto}.dates-heading .eyebrow{font-size:7px;margin-bottom:2px}.dates-heading strong{font-size:10px;letter-spacing:.13em;color:#075b43}.dates-heading>span{font:italic 11px Georgia;color:#91b3a4}
+.calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));grid-auto-rows:minmax(22px,1fr);gap:3px;flex:1 1 auto;min-height:0}
+.weekday,.date-cell{display:flex;align-items:center;justify-content:center;border-radius:4px;position:relative;min-height:0}
+.weekday{background:#eaf4ed;color:#668b79;font-weight:800;font-size:8px}.date-cell{background:#fff;border:1px solid #edf2ed;color:#355b4a;font-size:14px;font-weight:650;flex-direction:column;gap:0}
+.date-cell.weekend{background:#f7f5ed;color:#9a7860}.date-cell.holiday{background:#fff0df;border-color:#efd2ad;color:#9a5529}.date-cell.empty{background:transparent;border-color:transparent}
+.date-markers{display:flex;gap:2px;align-items:center;justify-content:center;font-size:7px;line-height:1;color:#b56b2e;font-weight:900}.date-cell.weekend .date-markers{color:#8e9b79}.date-cell .poya-marker{color:#8b62ad}
+.holiday-legend{display:flex;align-items:center;justify-content:flex-start;gap:12px;flex-wrap:wrap;flex:0 0 auto;padding:6px 1px 2px;color:#748f82;font-size:7px}.holiday-legend span{white-space:nowrap}.holiday-legend b{font-size:10px;color:#a65e2b;margin-right:2px}.holiday-legend span:last-child b{color:#8b62ad}
+.holiday-list{display:flex;flex-wrap:wrap;gap:3px;flex:0 0 auto;max-height:30px;overflow:hidden;padding-bottom:2px}.holiday-chip{font-size:7px;color:#8b5b32;background:#fff4e8;border:1px solid #f1ddc5;border-radius:9px;padding:3px 5px;white-space:nowrap}
+.page-controls{display:flex;align-items:center;justify-content:space-between;margin-top:6px;padding-top:4px;flex:0 0 auto}.page-controls>span{font-size:8px;font-weight:800;letter-spacing:.12em;color:#78958a}.page-btn{border:1px solid #cfe2d5;border-radius:18px;padding:6px 12px;background:#fff;color:#246345;font-size:8px;font-weight:700}.page-btn:hover,.next-page-btn{background:#087d50;color:white;border-color:#087d50}
+.install-modal{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:18px;background:#082d22a8;backdrop-filter:blur(5px)}.install-modal[hidden]{display:none}.install-dialog{width:min(470px,100%);position:relative;border-radius:18px;padding:27px;background:#fffefa;box-shadow:0 20px 70px #001d1440;color:#234b3b}.install-close{position:absolute;right:12px;top:9px;border:0;background:transparent;font-size:26px;color:#6f8b7c}.install-dialog-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;background:#e7f5e9;color:#087d50;font-size:27px}.install-dialog h2{font:700 23px Georgia,serif;color:#075b43;margin:13px 0}.install-instructions p{font-size:12px;line-height:1.55;color:#557267}.install-hint{padding:10px;border-radius:9px;background:#f0f8f1;color:#46735a!important}
+[hidden]{display:none!important}
+@media(max-height:720px) and (min-width:761px){
+ .app-shell{min-height:0;padding-top:6px}.topbar{height:54px;flex-basis:54px}.calendar-layout{padding-top:8px;gap:10px;grid-template-columns:minmax(0,1fr) 235px}.month-sidebar{padding:9px}.sidebar-heading{padding:8px 10px;margin-bottom:7px;font-size:16px}.month-navigation{gap:4px}.month-tab{min-height:29px;padding:4px 9px;font-size:11px}.sidebar-bottom{padding-top:6px}.month-page{padding:10px 18px 7px}.month-feature{flex-basis:174px;margin:7px 0}.artwork-frame{height:174px}.artist-panel{padding:8px 10px}.artist-panel h2{font-size:17px}.artist-info{padding:3px 0}.art-quote{margin:3px 0;padding:5px 7px 4px 15px}.art-quote p{font-size:9px}.music-control-row{margin:2px 0}.calendar-grid{grid-auto-rows:minmax(19px,1fr);gap:2px}.date-cell{font-size:12px}.holiday-legend{padding-top:4px;gap:9px}.holiday-list{max-height:24px}.page-controls{margin-top:3px;padding-top:2px}
+}
+@media(max-width:900px) and (min-width:701px){.calendar-layout{grid-template-columns:minmax(0,1fr) 210px;gap:10px}.month-page{padding:12px 15px 8px}.month-feature{grid-template-columns:minmax(0,1.35fr) minmax(185px,.85fr);gap:9px}.artist-panel{padding:8px}.art-quote p{font-size:9px}.month-tab{font-size:10px}.brand img{width:150px}}
+@media(max-width:700px){
+ body{overflow-y:auto}.app-shell{height:auto;min-height:100vh;padding:7px;overflow:visible}.topbar{height:54px;flex-basis:54px;gap:6px;padding:0 3px 7px}.brand img{width:125px;max-height:40px}.header-title{font-size:7px;letter-spacing:.06em}.header-title span{font-size:6px;letter-spacing:.08em}.top-actions{gap:4px;margin-left:2px}.round-control{width:33px;height:33px;font-size:17px}
+ .calendar-layout{display:flex;flex-direction:column;padding-top:8px}.viewer{order:1}.calendar-card{height:auto;min-height:0;border-radius:15px}.cover-page{min-height:650px;display:flex;flex-direction:column}.cover-art-panel{min-height:255px;height:40%;flex:1}.cover-art-panel:after{background:linear-gradient(180deg,transparent 75%,#f9fcf7 100%)}.cover-copy-panel{padding:17px 20px 24px;align-items:center;text-align:center}.cover-year{top:10px;right:15px;font-size:30px}.cover-copy-panel h1{font-size:42px}.cover-copy-panel h2{font-size:20px}.cover-description{margin-bottom:13px}
+ .month-page{height:auto;min-height:0;padding:14px 11px 10px;overflow:visible}.month-page-header h1{font-size:29px}.month-mark{font-size:20px}.month-feature{grid-template-columns:1fr;flex:0 0 auto;gap:8px;margin:10px 0}.artwork-frame{height:225px}.artist-panel{padding:12px}.artist-panel h2{font-size:20px}.artist-info{padding:7px 0}.art-quote p{font-size:11px}.dates-panel{flex:0 0 auto;overflow:visible}.calendar-grid{grid-auto-rows:34px;gap:3px}.weekday{font-size:8px}.date-cell{font-size:14px}.holiday-legend{gap:9px;font-size:7px}.holiday-list{max-height:none}.page-controls{margin-top:10px;padding-top:8px}.month-sidebar{order:2;min-height:0;padding:10px;border-radius:15px}.sidebar-heading{font-size:15px;padding:8px 12px;margin-bottom:8px}.month-navigation{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.month-tab{min-height:34px;padding:6px 7px;font-size:10px;gap:5px;justify-content:center}.tab-icon{font-size:14px;width:auto}.sidebar-bottom{display:none}.sound-note{white-space:normal;line-height:1.4;margin:5px}.site-footer{padding:7px 0}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+
+/* 2027 calendar refresh: separate artwork and full-page month views */
+[hidden]{display:none!important}
+.app-shell{height:100dvh;min-height:620px;padding:8px 16px 6px;overflow:hidden}
+.topbar{flex:0 0 54px;height:54px;padding-bottom:6px}
+.calendar-layout{padding:9px 0 5px;grid-template-columns:minmax(0,1fr) 250px;gap:12px;min-height:0}
+.calendar-card{border-radius:18px}
+.month-sidebar{padding:10px;overflow:hidden}
+.month-navigation{overflow-y:auto;overscroll-behavior:contain;padding-right:3px;gap:5px;scrollbar-width:thin}
+.month-tab{flex:0 0 34px;min-height:34px;padding:5px 10px}
+.sidebar-bottom{flex:0 0 auto;padding-top:6px;margin-top:6px;gap:2px}
+.sidebar-year{font-size:20px;line-height:1.1}
+.sidebar-bottom>span:nth-child(2){font-size:6px;line-height:1.3}
+.sidebar-install{margin-top:3px;padding:6px 12px;white-space:nowrap}
+.site-footer{flex:0 0 15px;padding-top:3px}
+.artwork-page,.month-page{height:100%;min-height:0;padding:18px 28px 14px;display:flex;flex-direction:column;overflow:hidden;background:linear-gradient(135deg,#fffefa,#f3faf5)}
+.page-heading,.month-page-header{display:flex;justify-content:space-between;align-items:center;gap:15px;flex:0 0 auto;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.page-heading .eyebrow,.month-page-header .eyebrow{font-size:9px;margin-bottom:5px}
+.page-heading h1,.month-page-header h1{font:700 clamp(30px,3.4vw,48px) Georgia,serif;color:#075b43;margin:0}
+.page-heading h1 small,.month-page-header h1 small{font:400 19px Arial;color:#7eaa98;margin-left:7px}
+.month-mark{font-size:25px;white-space:nowrap}
+.artwork-stage{position:relative;flex:1 1 auto;min-height:0;margin:16px 0 10px;border:7px solid #fff;border-radius:15px;overflow:hidden;background:linear-gradient(135deg,#dff2e6,#e4f3f7);box-shadow:0 7px 24px #214e3718;display:flex;align-items:center;justify-content:center}
+.artwork-stage img{display:block;width:100%;height:100%;object-fit:contain;position:relative;z-index:1}
+.artwork-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;text-align:center;color:#39796a}
+.artwork-placeholder strong{font:700 clamp(22px,3vw,34px) Georgia,serif}
+.artwork-placeholder span:not(.placeholder-leaf){font-size:13px}
+.artwork-placeholder small{font-size:11px}
+.artwork-caption{flex:0 0 auto;display:grid;grid-template-columns:minmax(180px,1fr) minmax(0,2fr);gap:20px;align-items:center;padding:9px 14px;background:#f0f8f1;border:1px solid #dcebe0;border-radius:11px}
+.artwork-caption-title>span{font-size:8px;letter-spacing:.16em;color:#16804e;font-weight:800}
+.artwork-caption-title h2{font:700 clamp(16px,1.7vw,22px) Georgia,serif;color:#145b46;margin:4px 0 0}
+.artwork-meta{display:grid;grid-template-columns:1fr 1fr 1.5fr;gap:12px;align-items:center}
+.artwork-meta>div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.artwork-meta>div span{font-size:7px;letter-spacing:.14em;color:#7e9b8d}
+.artwork-meta>div strong{font-size:10px;color:#315b49;overflow-wrap:anywhere}
+.artwork-meta blockquote{margin:0;padding-left:12px;border-left:2px solid #e7ad57}
+.artwork-meta blockquote p{font:italic 11px/1.35 Georgia,serif;color:#456b58;margin:0}
+.page-controls{flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:10px}
+.page-controls>span{font-size:10px;font-weight:800;letter-spacing:.15em;color:#668d7b}
+.page-btn{border:1px solid #c8dfd0;border-radius:22px;padding:8px 15px;background:#fff;color:#176c48;font-size:11px;font-weight:750;white-space:nowrap}
+.next-page-btn{background:#07804c;color:white;border-color:#07804c}
+.month-page{padding:18px 28px 14px}
+.month-page-header{padding-bottom:10px}
+.calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));grid-template-rows:34px repeat(6,minmax(0,1fr));gap:5px;flex:1 1 auto;min-height:0}
+.weekday{display:flex;align-items:center;justify-content:center;background:#e7f3eb;border-radius:7px;color:#397b61;font-size:11px;font-weight:850;letter-spacing:.08em}
+.date-cell{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:0;border:1px solid #dcebe2;border-radius:8px;background:#fff;color:#174c31}
+.date-cell.weekend{background:#f6f5ed}
+.date-cell.holiday{background:#fff0df;border-color:#efc18d}
+.date-cell.poya-day{background:#ffebd5;border:2px solid #e7a45e}
+.date-cell.empty{background:transparent;border-color:transparent}
+.date-number{font:700 clamp(19px,2.3vw,32px)/1 Arial,sans-serif;color:#174c31;font-variant-numeric:tabular-nums}
+.date-cell.holiday .date-number,.date-cell.poya-day .date-number{color:#a64e12}
+.date-markers{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:900;color:#bf7b2e;line-height:1}
+.date-markers .poya-marker{color:#d66b16;font-size:13px}
+.holiday-section{flex:0 0 auto;padding-top:12px}
+.holiday-section h2{font:700 15px Georgia,serif;color:#145b46;margin:0 0 8px}
+.holiday-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:6px;max-height:92px;overflow-y:auto}
+.holiday-item{display:flex;align-items:center;gap:9px;min-width:0;padding:7px 9px;border:1px solid #e8d7bd;border-radius:7px;background:#fffaf2;color:#6d553a;font-size:10px;line-height:1.25}
+.holiday-item.poya-holiday{background:#fff1df;border-color:#e9b16f;color:#8b4a16}
+.holiday-day{flex:0 0 30px;font-size:16px;color:#a65c1d;font-variant-numeric:tabular-nums}
+.holiday-legend{display:flex;flex-wrap:wrap;gap:13px;padding:8px 0 0;color:#718c80;font-size:9px}
+.holiday-legend b{color:#d18b37;margin-right:3px}
+.month-page .page-controls{padding-top:8px}
+.install-modal{position:fixed;z-index:1000;inset:0;display:flex;align-items:center;justify-content:center;padding:18px;background:#092e25a8;backdrop-filter:blur(5px)}
+.install-modal[hidden]{display:none!important}
+.install-dialog{position:relative;width:min(470px,100%);max-height:90vh;overflow-y:auto;padding:28px;border-radius:20px;background:#fffefa;box-shadow:0 20px 60px #092e2540}
+.install-close{position:absolute;right:14px;top:12px;border:0;background:transparent;color:#668b7b;font-size:27px}
+.install-dialog-icon{width:43px;height:43px;display:grid;place-items:center;border-radius:12px;background:#e5f4e9;color:#07804c;font-size:27px}
+.install-dialog h2{font:700 24px/1.12 Georgia,serif;color:#075b43;margin:14px 0}
+.install-instructions p{font-size:12px;line-height:1.6;color:#58786a;margin:10px 0}
+.install-hint{padding:12px;border-radius:10px;background:#eff7f0}
+@media(max-width:850px){
+ .app-shell{height:auto;min-height:100dvh;overflow:visible;padding:8px 10px}
+ .calendar-layout{grid-template-columns:1fr;grid-template-rows:minmax(620px,78vh) auto}
+ .month-sidebar{order:2;max-height:none}
+ .month-navigation{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible}
+ .month-tab{min-width:0;font-size:11px}
+ .sidebar-bottom{padding-top:9px}
+ .viewer{min-height:620px}
+}
+@media(max-width:600px){
+ .topbar{gap:8px}.brand img{width:130px}.header-title{font-size:8px}
+ .calendar-layout{grid-template-rows:minmax(600px,75vh) auto}
+ .artwork-page,.month-page{padding:13px 12px 10px}
+ .page-heading h1,.month-page-header h1{font-size:29px}
+ .month-mark{font-size:18px}.month-mark span{font-size:6px}
+ .artwork-caption{grid-template-columns:1fr;gap:7px;padding:9px}
+ .artwork-meta{grid-template-columns:1fr 1fr;gap:8px}
+ .artwork-meta blockquote{grid-column:1/-1}
+ .calendar-grid{gap:3px;grid-template-rows:28px repeat(6,minmax(0,1fr))}
+ .weekday{font-size:8px}
+ .date-number{font-size:clamp(15px,4vw,23px)}
+ .date-markers{font-size:8px;gap:2px}
+ .holiday-list{grid-template-columns:1fr 1fr;max-height:100px}
+ .holiday-item{font-size:9px;padding:6px}
+ .holiday-legend{gap:7px;font-size:8px}
+ .page-btn{padding:7px 10px;font-size:10px}
+}
+@media(max-height:760px) and (min-width:851px){
+ .app-shell{min-height:560px}
+ .calendar-layout{grid-template-columns:minmax(0,1fr) 235px}
+ .artwork-page,.month-page{padding-top:12px;padding-bottom:9px}
+ .artwork-stage{margin:10px 0 7px}
+ .artwork-caption{padding:7px 12px}
+ .holiday-section{padding-top:7px}
+ .holiday-list{max-height:70px}
+}
+
+/* Final refinements: compact all-month navigation, clean artwork pages and stable date cells */
+.month-sidebar{overflow:hidden}
+.month-navigation{overflow:hidden!important;overscroll-behavior:contain;padding:0!important;gap:4px!important;flex:1 1 auto;min-height:0}
+.month-tab{flex:1 1 0!important;min-height:27px!important;height:auto;padding:3px 9px!important;font-size:11px}
+.sidebar-heading{flex:0 0 auto}
+.sidebar-bottom{flex:0 0 auto}
+.music-toggle{font-family:Georgia,serif;font-size:22px;line-height:1;color:#087d50}
+.music-toggle[aria-pressed="true"]{background:#e4f5e8;border-color:#8bc59d;color:#075b43}
+.music-toggle[hidden]{display:none!important}
+.artwork-page{padding:10px 22px 10px!important;gap:8px}
+.artwork-page .artwork-stage{flex:1 1 auto;min-height:0;margin:0;border:0;border-radius:12px;background:transparent;box-shadow:none}
+.artwork-page .artwork-stage img{object-fit:contain;animation:artwork-gentle-motion 18s ease-in-out infinite alternate;transform-origin:center center}
+@keyframes artwork-gentle-motion{0%{transform:scale(1.005) translate3d(-.25%,.15%,0)}100%{transform:scale(1.035) translate3d(.25%,-.25%,0)}}
+.artwork-page .artwork-placeholder{border-radius:12px;background:linear-gradient(135deg,#e8f5ec,#e8f3f7)}
+.artwork-page .artwork-placeholder span:not(.placeholder-leaf){font:italic 13px Georgia,serif;color:#709487}
+.artwork-page .artwork-caption{padding:7px 12px;grid-template-columns:1fr;gap:0;background:#f7faf6}
+.artwork-page .artwork-meta{grid-template-columns:minmax(110px,.8fr) minmax(110px,.8fr) minmax(180px,2fr);gap:12px}
+.artwork-page .artwork-meta>div{gap:2px}
+.artwork-page .artwork-meta>div span{font-size:7px}
+.artwork-page .artwork-meta>div strong{font-size:9px}
+.artwork-page .artwork-meta blockquote{padding-left:9px}
+.artwork-page .artwork-meta blockquote p{font-size:10px}
+.artwork-page .page-controls{padding-top:2px}
+.month-page-header{min-height:48px}
+.month-page-header .eyebrow{display:none}
+.calendar-grid{grid-template-rows:30px repeat(6,minmax(0,1fr));gap:4px}
+.date-cell{display:grid!important;grid-template-rows:minmax(0,1fr) 9px;align-items:center;justify-items:center;justify-content:stretch;gap:0!important;padding:1px 2px;overflow:hidden;line-height:1}
+.date-number{display:block;align-self:center;justify-self:center;font-size:clamp(17px,2.05vw,29px);line-height:.95!important;margin:0!important;padding:0!important;font-variant-numeric:tabular-nums}
+.date-markers{display:flex;align-items:center;justify-content:center;align-self:center;justify-self:center;width:100%;height:9px;min-height:9px;overflow:hidden;font-size:8px;line-height:9px!important;gap:4px;margin:0;padding:0}
+.date-markers span{display:inline-block;line-height:9px}
+.holiday-section{padding-top:7px}
+.holiday-section h2{margin-bottom:5px;font-size:13px}
+.holiday-list{max-height:48px;overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:4px}
+.holiday-item{min-height:22px;padding:4px 7px;font-size:9px}
+.holiday-day{font-size:13px}
+.holiday-legend{padding-top:5px;gap:10px;font-size:8px}
+.month-page .page-controls{padding-top:5px}
+@media(max-height:760px) and (min-width:701px){
+ .month-sidebar{padding:8px}
+ .sidebar-heading{padding:7px 10px;margin-bottom:6px;font-size:15px}
+ .month-navigation{gap:3px!important}
+ .month-tab{min-height:24px!important;font-size:10px;padding:2px 8px!important}
+ .sidebar-bottom{padding-top:4px;margin-top:4px}
+ .sidebar-year{font-size:17px}
+ .sidebar-bottom>span:nth-child(2){font-size:5px}
+ .sidebar-install{padding:4px 10px;font-size:8px}
+ .month-page{padding-top:9px!important;padding-bottom:7px!important}
+ .month-page-header{min-height:42px}
+ .calendar-grid{grid-template-rows:26px repeat(6,minmax(0,1fr));gap:3px}
+ .date-number{font-size:clamp(16px,1.8vw,25px)}
+ .holiday-section{padding-top:4px}
+ .holiday-list{max-height:40px}
+ .holiday-legend{padding-top:3px}
+ .page-controls{margin-top:2px}
+}
+@media(max-width:700px){
+ .calendar-layout{display:flex;flex-direction:column}
+ .month-sidebar{order:0;width:100%;padding:8px;max-height:none}
+ .sidebar-heading{font-size:14px;padding:7px 10px;margin-bottom:7px}
+ .month-navigation{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px!important;overflow:visible!important}
+ .month-tab{min-height:30px!important;height:30px;padding:4px 5px!important;justify-content:center;font-size:10px;gap:4px}
+ .tab-icon{width:auto;font-size:12px}
+ .sidebar-bottom{display:none}
+ .viewer{order:1;min-height:0}
+ .calendar-card{height:auto;min-height:0}
+ .artwork-page{min-height:68vh;padding:8px!important}
+ .artwork-page .artwork-stage{min-height:48vh}
+ .artwork-page .artwork-meta{grid-template-columns:1fr 1fr;gap:7px}
+ .artwork-page .artwork-meta blockquote{grid-column:1/-1}
+ .month-page{height:auto;min-height:620px;padding:12px 10px 9px!important;overflow:hidden}
+ .month-page-header{min-height:40px}
+ .month-page-header h1{font-size:28px}
+ .calendar-grid{grid-template-rows:27px repeat(6,36px);gap:3px}
+ .date-number{font-size:clamp(15px,4vw,22px)}
+ .date-markers{font-size:7px;gap:2px}
+ .holiday-list{max-height:70px;grid-template-columns:repeat(2,minmax(0,1fr))}
+ .holiday-item{font-size:8px;gap:5px;padding:4px}
+ .holiday-day{flex-basis:22px;font-size:12px}
+ .holiday-legend{gap:7px;font-size:7px}
+}
+@media(prefers-reduced-motion:reduce){.artwork-page .artwork-stage img{animation:none!important}}
+.date-cell{grid-template-rows:minmax(0,1fr) auto!important}
+.date-markers:empty{height:0!important;min-height:0!important;line-height:0!important}

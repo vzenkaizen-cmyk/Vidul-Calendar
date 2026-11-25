@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#087d50"><meta name="description" content="Vidullanka PLC Digital Calendar 2027">
+<meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Vidullanka 2027">
+<title>Vidullanka Digital Calendar 2027</title>
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="192x192" href="assets/app-icon-192.png">
+<link rel="apple-touch-icon" href="assets/app-icon-192.png"><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app-shell">
+<header class="topbar">
+<a class="brand" href="#" id="homeLink" aria-label="Vidullanka calendar cover"><img src="assets/vidullanka-logo.svg" alt="Vidullanka PLC logo"></a>
+<div class="header-title"><strong>VIDULLANKA DIGITAL CALENDAR</strong><span>CREATIVITY FROM EVERY SITE · 2027</span></div>
+<div class="top-actions"><button class="round-control music-toggle" id="musicToggle" type="button" title="Play monthly instrumental" aria-label="Play monthly instrumental" aria-pressed="false">♫</button><button class="round-control install-control" id="installBtn" type="button" title="Install calendar app" aria-label="Install calendar app">＋</button><button class="round-control" id="fullBtn" type="button" title="Toggle full screen" aria-label="Toggle full screen">⛶</button></div>
+</header>
+<main class="calendar-layout">
+<section class="viewer" aria-live="polite">
+<article class="calendar-card" id="calendarCard">
+<section class="cover-page" id="coverPage">
+<div class="cover-art-panel"><img src="assets/cover-nature-artwork.jpg" alt="Watercolour illustration of a green landscape, waterfall, wind turbines and solar panels"><span class="art-glow"></span></div>
+<div class="cover-copy-panel"><div class="cover-year">2027</div><p class="eyebrow">VIDULLANKA PLC PRESENTS</p><h1>Creativity <em>from Every Site</em></h1><div class="title-accent"></div><h2>Celebrating Young Artists</h2><p class="cover-theme">Let's Protect the Beauty of Nature</p><p class="cover-description">Featuring creative young voices from the Vidul Art Competition 2026.</p><button class="primary-btn" id="exploreBtn" type="button">View Calendar <span>→</span></button></div>
+<div class="cover-leaf leaf-a">✦</div><div class="cover-leaf leaf-b">✧</div>
+</section>
+<section class="artwork-page" id="artworkPage" hidden>
+<span id="artPageMonth" hidden>January 2027</span>
+<div class="artwork-stage" id="artworkFrame"><img id="artworkImage" src="" alt="Featured artwork by a young artist"><div class="artwork-placeholder" id="artworkPlaceholder"><span class="placeholder-leaf">✦</span><span>Artwork will appear here</span></div></div>
+<div class="artwork-caption"><span id="artworkTitle" hidden>Artwork title</span><div class="artwork-meta"><div><span>ARTIST</span><strong id="artistCredit">To be announced</strong></div><div><span>AGE CATEGORY</span><strong id="ageCategory">To be confirmed</strong></div><blockquote><p id="quoteText">Every small act of care helps nature flourish.</p></blockquote></div></div>
+<div class="page-controls"><button class="page-btn" id="prevBtn" type="button">‹ Previous</button><span id="pageNumber">02 / 25</span><button class="page-btn next-page-btn" id="nextBtn" type="button">View January Calendar ›</button></div>
+</section>
+<section class="month-page" id="monthPage" hidden>
+<header class="month-page-header"><h1 id="monthTitle">January <small>2027</small></h1></header>
+<div class="calendar-grid" id="calendarGrid"></div>
+<div class="holiday-section"><h2>Holidays & Full Moon Poya Days</h2><div class="holiday-list" id="holidayList"></div></div>
+<div class="holiday-legend"><span><b>*</b> Public holiday</span><span><b>†</b> Bank holiday</span><span><b>‡</b> Mercantile holiday</span><span><b>●</b> Full Moon Poya</span></div>
+<div class="page-controls"><button class="page-btn" id="monthPrevBtn" type="button">‹ Previous</button><span id="monthPageNumber">03 / 25</span><button class="page-btn next-page-btn" id="monthNextBtn" type="button">Next month ›</button></div>
+</section>
+</article>
+</section>
+<aside class="month-sidebar"><div class="sidebar-heading"><span class="sidebar-calendar-icon">▦</span><strong>Months</strong></div>
+<nav id="monthNavigation" class="month-navigation" aria-label="Calendar months"><button class="month-tab cover-tab active" data-page="0" type="button"><span class="tab-icon">⌂</span><span>Cover</span></button></nav>
+<div class="sidebar-bottom"><span class="sidebar-year">2027</span><span>LET'S PROTECT THE BEAUTY OF NATURE</span><button class="sidebar-install" id="sidebarInstallBtn" type="button">＋ Install Calendar</button></div></aside>
+</main>
+<footer class="site-footer">© 2027 Vidullanka PLC · Digital Calendar</footer>
+</div>
+<div class="install-modal" id="installModal" hidden><div class="install-dialog" role="dialog" aria-modal="true" aria-labelledby="installTitle">
+<button class="install-close" id="installClose" type="button" aria-label="Close">×</button><div class="install-dialog-icon">＋</div><h2 id="installTitle">Add Vidullanka Calendar to your device</h2>
+<div id="installInstructions" class="install-instructions"><p><strong>On iPhone or iPad:</strong> Open this website in Safari, tap the Share button, then choose <b>Add to Home Screen</b>.</p><p><strong>On Android:</strong> Open the website in Chrome, tap the three-dot menu, then choose <b>Install app</b> or <b>Add to Home screen</b>.</p><p><strong>On a laptop:</strong> In Chrome or Edge, use the install icon in the address bar or browser menu and choose <b>Install Vidullanka Digital Calendar</b>.</p><p class="install-hint">After installation, open the calendar from its new home-screen or desktop icon. Visit once while online first so the calendar can be saved for offline use.</p></div>
+</div></div>
+<audio id="monthAudio" preload="none" loop></audio>
+<script src="script.js"></script>
+</body></html>
