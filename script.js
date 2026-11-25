@@ -1,4 +1,4 @@
-const MONTHS = [
+const MONTHS = [ 
  {name:"January",file:"january.jpg",artist:"To be announced",title:"Artwork title to be added",age:"To be confirmed",motion:"motion-drift",music:"january.wav",quote:"Every small act of care helps nature flourish."},
  {name:"February",file:"february.jpg",artist:"To be announced",title:"Artwork title to be added",age:"To be confirmed",motion:"motion-float",music:"february.wav",quote:"Like raindrops, little acts of kindness help our world grow."},
  {name:"March",file:"march.jpg",artist:"To be announced",title:"Artwork title to be added",age:"To be confirmed",motion:"motion-sway",music:"march.wav",quote:"Let the wind remind us that change can bring new life."},
