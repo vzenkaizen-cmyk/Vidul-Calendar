@@ -1,5 +1,5 @@
 :root{
-  --green:#087d50;--deep:#07543f;--leaf:#4eaa43;--mint:#e8f5eb;--sky:#e9f6fa; 
+  --green:#087d50;--deep:#07543f;--leaf:#4eaa43;--mint:#e8f5eb;--sky:#e9f6fa;
   --ink:#183f35;--muted:#78958a;--gold:#efa14a;--paper:#fffefa;--line:#dcebe2;
   font-family:Inter,"Segoe UI",Arial,sans-serif;color:var(--ink);background:#f3f8f5
 }
@@ -290,3 +290,24 @@ button{font:inherit;cursor:pointer}
 @media(prefers-reduced-motion:reduce){.artwork-page .artwork-stage img{animation:none!important}}
 .date-cell{grid-template-rows:minmax(0,1fr) auto!important}
 .date-markers:empty{height:0!important;min-height:0!important;line-height:0!important}
+
+
+/* Month calendar artwork background: subtle enough to keep date numbers readable. */
+.month-page{
+  position:relative;
+  background-image:
+    linear-gradient(rgba(255,254,250,.86),rgba(243,250,245,.86)),
+    var(--month-artwork, none);
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+}
+.month-page .weekday{background:rgba(231,243,235,.88)}
+.month-page .date-cell{
+  background:rgba(255,255,255,.84);
+  text-shadow:0 1px 1px rgba(255,255,255,.75);
+}
+.month-page .date-cell.weekend{background:rgba(246,245,237,.87)}
+.month-page .date-cell.holiday{background:rgba(255,240,223,.91)}
+.month-page .date-cell.poya-day{background:rgba(255,235,213,.94)}
+.month-page .date-cell.empty{background:transparent}
