@@ -1,5 +1,5 @@
 const CACHE_NAME = "vidullanka-calendar-2027-v4";
-const APP_FILES = [
+const APP_FILES = [ 
   "./",
   "./index.html",
   "./styles.css",
