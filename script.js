@@ -1,4 +1,4 @@
-const MONTHS = [  
+const MONTHS = [ 
  {name:"January",file:"january.jpg",artist:"Chamindu Chathumina",title:"Let’s Protect the Beauty of Nature",age:"10 years",motion:"motion-drift",music:"january.wav",quote:"Protecting wildlife and natural habitats keeps our world beautiful."},
  {name:"February",file:"february.jpg",artist:"To be announced",title:"Let’s Protect the Beauty of Nature",age:"To be confirmed",motion:"motion-float",music:"february.wav",quote:"Like raindrops, little acts of kindness help our world grow."},
  {name:"March",file:"march.jpg",artist:"To be announced",title:"Let’s Protect the Beauty of Nature",age:"To be confirmed",motion:"motion-sway",music:"march.wav",quote:"Let the wind remind us that change can bring new life."},
@@ -118,15 +118,25 @@ function showPage(nextPage){
   const frame=$("artworkFrame"),image=$("artworkImage");
   const placeholder=$("artworkPlaceholder");
   frame.style.setProperty("--artwork-backdrop", `url("/assets/artworks/${encodeURIComponent(month.file)}")`);
+
+  // Apply the gentle motion assigned to each month in MONTHS.
+  // The image itself remains uncropped and keeps its original aspect ratio.
+  image.className = `artwork-image ${month.motion || "motion-drift"}`;
+  image.decoding = "async";
+  image.loading = "eager";
+  if ("fetchPriority" in image) image.fetchPriority = "high";
+
   placeholder.hidden=false;
   image.onload=()=>{
    placeholder.hidden=true;
    frame.classList.add("has-image");
    image.style.display="block";
+   image.classList.add("artwork-motion-active");
   };
   image.onerror=()=>{
    placeholder.hidden=false;
    frame.classList.remove("has-image");
+   image.classList.remove("artwork-motion-active");
    image.style.display="none";
   };
   image.alt=`${month.name} 2027 featured artwork from Vidul Art Competition 2026`;
