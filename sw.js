@@ -1,4 +1,4 @@
-const CACHE_NAME = "vidullanka-calendar-2027-v6";
+const CACHE_NAME = "vidullanka-calendar-2027-v7";
 
 const APP_FILES = [
   "./",
