@@ -1,5 +1,5 @@
 const MONTHS = [
- {name:"January",file:"January.jpg",artist:"Chamindu Chathumina",title:"Let’s Protect the Beauty of Nature",age:"10 years",motion:"motion-drift",music:"january.wav",quote:"Protecting wildlife and natural habitats keeps our world beautiful."},
+ {name:"January",file:"january.jpg",artist:"Chamindu Chathumina",title:"Let’s Protect the Beauty of Nature",age:"10 years",motion:"motion-drift",music:"january.wav",quote:"Protecting wildlife and natural habitats keeps our world beautiful."},
  {name:"February",file:"february.jpg",artist:"To be announced",title:"Let’s Protect the Beauty of Nature",age:"To be confirmed",motion:"motion-float",music:"february.wav",quote:"Like raindrops, little acts of kindness help our world grow."},
  {name:"March",file:"march.jpg",artist:"To be announced",title:"Let’s Protect the Beauty of Nature",age:"To be confirmed",motion:"motion-sway",music:"march.wav",quote:"Let the wind remind us that change can bring new life."},
  {name:"April",file:"april.jpg",artist:"To be announced",title:"Let’s Protect the Beauty of Nature",age:"To be confirmed",motion:"motion-zoom",music:"april.wav",quote:"A greener tomorrow begins with the seeds we plant today."},
