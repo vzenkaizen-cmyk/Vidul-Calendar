@@ -311,3 +311,45 @@ button{font:inherit;cursor:pointer}
 .month-page .date-cell.holiday{background:rgba(255,240,223,.91)}
 .month-page .date-cell.poya-day{background:rgba(255,235,213,.94)}
 .month-page .date-cell.empty{background:transparent}
+
+
+/* Strong, visible artwork layer behind the monthly calendar content. */
+.month-page{
+  position:relative !important;
+  isolation:isolate;
+  background:linear-gradient(135deg,#fffefa,#f3faf5) !important;
+}
+.month-page::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background-image:var(--month-artwork);
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+  opacity:.28;
+}
+.month-page > *{
+  position:relative;
+  z-index:1;
+}
+.month-page .weekday{
+  background:rgba(231,243,235,.88) !important;
+}
+.month-page .date-cell{
+  background:rgba(255,255,255,.78) !important;
+}
+.month-page .date-cell.weekend{
+  background:rgba(246,245,237,.82) !important;
+}
+.month-page .date-cell.holiday{
+  background:rgba(255,240,223,.88) !important;
+}
+.month-page .date-cell.poya-day{
+  background:rgba(255,235,213,.91) !important;
+}
+.month-page .date-cell.empty{
+  background:transparent !important;
+}
