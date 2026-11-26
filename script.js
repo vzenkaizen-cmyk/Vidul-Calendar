@@ -117,24 +117,23 @@ function showPage(nextPage){
   $("ageCategory").textContent=month.age;$("quoteText").textContent=month.quote;
   const frame=$("artworkFrame"),image=$("artworkImage");
   const placeholder=$("artworkPlaceholder");
-
-  // Reset the previous month's artwork state before loading the new image.
-  frame.classList.remove("has-image");
+  frame.style.setProperty("--artwork-backdrop", `url("/assets/artworks/${encodeURIComponent(month.file)}")`);
   placeholder.hidden=false;
-
   image.onload=()=>{
-   frame.classList.add("has-image");
    placeholder.hidden=true;
+   frame.classList.add("has-image");
+   image.style.display="block";
   };
-
   image.onerror=()=>{
-   frame.classList.remove("has-image");
    placeholder.hidden=false;
-   console.error("Artwork failed to load:", image.src);
+   frame.classList.remove("has-image");
+   image.style.display="none";
   };
-
   image.alt=`${month.name} 2027 featured artwork from Vidul Art Competition 2026`;
+  // Use an absolute same-origin URL and a version query to bypass stale
+  // relative-path/service-worker image entries from earlier deployments.
   image.src=`/assets/artworks/${encodeURIComponent(month.file)}?v=20271126`;
+  if(image.complete && image.naturalWidth>0) image.onload();
   $("pageNumber").textContent=`${String(pageIndex+1).padStart(2,"0")} / ${TOTAL_PAGES}`;
   $("monthPageNumber").textContent=`${String(pageIndex+1).padStart(2,"0")} / ${TOTAL_PAGES}`;
   $("nextBtn").textContent=`View ${month.name} Calendar ›`;
