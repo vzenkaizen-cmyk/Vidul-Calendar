@@ -393,3 +393,90 @@ button{font:inherit;cursor:pointer}
 .artwork-stage .artwork-placeholder{
   z-index:2;
 }
+
+/* FINAL ARTWORK FIX
+   Keep the complete original artwork visible while filling the unused
+   left/right space with a softly enlarged version of that same artwork. */
+.artwork-page .artwork-stage {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+  background: #dcefe3 !important;
+}
+
+/* Side-fill layer: this uses the image URL already supplied by script.js. */
+.artwork-page .artwork-stage::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: -28px !important;
+  z-index: 0 !important;
+  display: block !important;
+  background-image: var(--artwork-backdrop) !important;
+  background-position: center center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  filter: blur(18px) saturate(1.12) brightness(1.06) !important;
+  opacity: .88 !important;
+  transform: scale(1.08);
+  animation: artwork-backdrop-motion 24s ease-in-out infinite alternate;
+  pointer-events: none !important;
+}
+
+@keyframes artwork-backdrop-motion {
+  from { transform: scale(1.08) translate3d(-.3%, 0, 0); }
+  to   { transform: scale(1.16) translate3d(.3%, -.2%, 0); }
+}
+
+/* Foreground: preserve the entire drawing and its natural proportions. */
+.artwork-page .artwork-stage img,
+.artwork-page .artwork-stage.has-image img {
+  display: block !important;
+  position: relative !important;
+  z-index: 1 !important;
+  flex: 0 1 auto !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  background: transparent !important;
+  image-rendering: auto !important;
+  transform-origin: center center !important;
+  animation: artwork-foreground-motion 22s ease-in-out infinite alternate !important;
+  will-change: transform;
+}
+
+@keyframes artwork-foreground-motion {
+  from { transform: scale(1.002) translate3d(-.12%, .08%, 0); }
+  to   { transform: scale(1.018) translate3d(.12%, -.08%, 0); }
+}
+
+.artwork-page .artwork-stage.has-image::before {
+  opacity: .92 !important;
+}
+
+.artwork-page .artwork-stage .artwork-placeholder {
+  z-index: 2 !important;
+}
+
+@media (max-width: 700px) {
+  .artwork-page .artwork-stage {
+    min-height: 48vh !important;
+  }
+  .artwork-page .artwork-stage img {
+    object-fit: contain !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .artwork-page .artwork-stage::before,
+  .artwork-page .artwork-stage img {
+    animation: none !important;
+  }
+}
