@@ -1,16 +1,16 @@
 const MONTHS = [
- {name:"January",file:"january.jpg",artist:"Chamindu Chathumina",title:"Nature and Wildlife",age:"10 years",motion:"motion-drift",music:"january.wav",quote:"Protecting wildlife and natural habitats keeps our world beautiful."},
- {name:"February",file:"february.jpg",artist:"To be announced",title:"Artwork title to be added",age:"To be confirmed",motion:"motion-float",music:"february.wav",quote:"Like raindrops, little acts of kindness help our world grow."},
- {name:"March",file:"march.jpg",artist:"To be announced",title:"Artwork title to be added",age:"To be confirmed",motion:"motion-sway",music:"march.wav",quote:"Let the wind remind us that change can bring new life."},
- {name:"April",file:"april.jpg",artist:"To be announced",title:"Artwork title to be added",age:"To be confirmed",motion:"motion-zoom",music:"april.wav",quote:"A greener tomorrow begins with the seeds we plant today."},
- {name:"May",file:"may.jpg",artist:"To be announced",title:"Artwork title to be added",age:"To be confirmed",motion:"motion-pan",music:"may.wav",quote:"The beauty of nature is a gift worth protecting together."},
- {name:"June",file:"june.jpg",artist:"To be announced",title:"Artwork title to be added",age:"To be confirmed",motion:"motion-drift",music:"june.wav",quote:"Keep our rivers flowing clear, and life will continue to flourish."},
- {name:"July",file:"july.jpg",artist:"To be announced",title:"Artwork title to be added",age:"To be confirmed",motion:"motion-float",music:"july.wav",quote:"Reach for the sky while keeping your roots close to nature."},
- {name:"August",file:"august.jpg",artist:"To be announced",title:"Artwork title to be added",age:"To be confirmed",motion:"motion-sway",music:"august.wav",quote:"Every leaf tells a story; let us make it one of renewal."},
- {name:"September",file:"september.jpg",artist:"To be announced",title:"Artwork title to be added",age:"To be confirmed",motion:"motion-zoom",music:"september.wav",quote:"A world full of colour begins with a healthy natural world."},
- {name:"October",file:"october.jpg",artist:"To be announced",title:"Artwork title to be added",age:"To be confirmed",motion:"motion-pan",music:"october.wav",quote:"Protect the places where wildlife, wonder and imagination belong."},
- {name:"November",file:"november.jpg",artist:"To be announced",title:"Artwork title to be added",age:"To be confirmed",motion:"motion-drift",music:"november.wav",quote:"The earth is our shared home; let every choice show that we care."},
- {name:"December",file:"december.jpg",artist:"To be announced",title:"Artwork title to be added",age:"To be confirmed",motion:"motion-float",music:"december.wav",quote:"Carry the beauty of nature into every new beginning."}
+ {name:"January",file:"january.jpg",artist:"Chamindu Chathumina",title:"Let’s Protect the Beauty of Nature",age:"10 years",motion:"motion-drift",music:"january.wav",quote:"Protecting wildlife and natural habitats keeps our world beautiful."},
+ {name:"February",file:"february.jpg",artist:"To be announced",title:"Let’s Protect the Beauty of Nature",age:"To be confirmed",motion:"motion-float",music:"february.wav",quote:"Like raindrops, little acts of kindness help our world grow."},
+ {name:"March",file:"march.jpg",artist:"To be announced",title:"Let’s Protect the Beauty of Nature",age:"To be confirmed",motion:"motion-sway",music:"march.wav",quote:"Let the wind remind us that change can bring new life."},
+ {name:"April",file:"april.jpg",artist:"To be announced",title:"Let’s Protect the Beauty of Nature",age:"To be confirmed",motion:"motion-zoom",music:"april.wav",quote:"A greener tomorrow begins with the seeds we plant today."},
+ {name:"May",file:"may.jpg",artist:"To be announced",title:"Let’s Protect the Beauty of Nature",age:"To be confirmed",motion:"motion-pan",music:"may.wav",quote:"The beauty of nature is a gift worth protecting together."},
+ {name:"June",file:"june.jpg",artist:"To be announced",title:"Let’s Protect the Beauty of Nature",age:"To be confirmed",motion:"motion-drift",music:"june.wav",quote:"Keep our rivers flowing clear, and life will continue to flourish."},
+ {name:"July",file:"july.jpg",artist:"To be announced",title:"Let’s Protect the Beauty of Nature",age:"To be confirmed",motion:"motion-float",music:"july.wav",quote:"Reach for the sky while keeping your roots close to nature."},
+ {name:"August",file:"august.jpg",artist:"To be announced",title:"Let’s Protect the Beauty of Nature",age:"To be confirmed",motion:"motion-sway",music:"august.wav",quote:"Every leaf tells a story; let us make it one of renewal."},
+ {name:"September",file:"september.jpg",artist:"To be announced",title:"Let’s Protect the Beauty of Nature",age:"To be confirmed",motion:"motion-zoom",music:"september.wav",quote:"A world full of colour begins with a healthy natural world."},
+ {name:"October",file:"october.jpg",artist:"To be announced",title:"Let’s Protect the Beauty of Nature",age:"To be confirmed",motion:"motion-pan",music:"october.wav",quote:"Protect the places where wildlife, wonder and imagination belong."},
+ {name:"November",file:"november.jpg",artist:"To be announced",title:"Let’s Protect the Beauty of Nature",age:"To be confirmed",motion:"motion-drift",music:"november.wav",quote:"The earth is our shared home; let every choice show that we care."},
+ {name:"December",file:"december.jpg",artist:"To be announced",title:"Let’s Protect the Beauty of Nature",age:"To be confirmed",motion:"motion-float",music:"december.wav",quote:"Carry the beauty of nature into every new beginning."}
 ];
 
 const HOLIDAYS = {
