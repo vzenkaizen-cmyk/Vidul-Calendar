@@ -1,5 +1,5 @@
-const MONTHS = [ 
- {name:"January",file:"january.jpg",artist:"To be announced",title:"Artwork title to be added",age:"To be confirmed",motion:"motion-drift",music:"january.wav",quote:"Every small act of care helps nature flourish."},
+const MONTHS = [
+ {name:"January",file:"january.jpg",artist:"Chamindu Chathumina",title:"Nature and Wildlife",age:"10 years",motion:"motion-drift",music:"january.wav",quote:"Protecting wildlife and natural habitats keeps our world beautiful."},
  {name:"February",file:"february.jpg",artist:"To be announced",title:"Artwork title to be added",age:"To be confirmed",motion:"motion-float",music:"february.wav",quote:"Like raindrops, little acts of kindness help our world grow."},
  {name:"March",file:"march.jpg",artist:"To be announced",title:"Artwork title to be added",age:"To be confirmed",motion:"motion-sway",music:"march.wav",quote:"Let the wind remind us that change can bring new life."},
  {name:"April",file:"april.jpg",artist:"To be announced",title:"Artwork title to be added",age:"To be confirmed",motion:"motion-zoom",music:"april.wav",quote:"A greener tomorrow begins with the seeds we plant today."},
@@ -110,6 +110,7 @@ function showPage(nextPage){
  musicToggle.hidden=isCover;
  $("coverPage").hidden=!isCover;$("artworkPage").hidden=!isArtwork;$("monthPage").hidden=!isMonth;
  if(month){
+  $("monthPage").style.setProperty("--month-artwork", `url("assets/artworks/${month.file}")`);
   const title=`${month.name} <small>2027</small>`;
   $("artPageMonth").innerHTML=title;$("monthTitle").innerHTML=title;
   $("artworkTitle").textContent=month.title;$("artistCredit").textContent=month.artist;
