@@ -1,4 +1,4 @@
-const MONTHS = [  
+const MONTHS = [ 
  {name:"January",file:"january.jpg",artist:"Chamindu Chathumina",title:"Let’s Protect the Beauty of Nature",age:"10 years",motion:"motion-drift",music:"january.wav",quote:"Protecting wildlife and natural habitats keeps our world beautiful."},
  {name:"February",file:"february.jpg",artist:"To be announced",title:"Let’s Protect the Beauty of Nature",age:"To be confirmed",motion:"motion-float",music:"february.wav",quote:"Like raindrops, little acts of kindness help our world grow."},
  {name:"March",file:"march.jpg",artist:"To be announced",title:"Let’s Protect the Beauty of Nature",age:"To be confirmed",motion:"motion-sway",music:"march.wav",quote:"Let the wind remind us that change can bring new life."},
@@ -116,9 +116,25 @@ function showPage(nextPage){
   $("artworkTitle").textContent=month.title;$("artistCredit").textContent=month.artist;
   $("ageCategory").textContent=month.age;$("quoteText").textContent=month.quote;
   const frame=$("artworkFrame"),image=$("artworkImage");
-  $("artworkPlaceholder").hidden=false;image.onload=()=>{$("artworkPlaceholder").hidden=true;};
-  image.onerror=()=>{$("artworkPlaceholder").hidden=false;};
-  image.src=`assets/artworks/${month.file}`;image.alt=`${month.name} 2027 featured artwork from Vidul Art Competition 2026`;
+  const placeholder=$("artworkPlaceholder");
+
+  // Reset the previous month's artwork state before loading the new image.
+  frame.classList.remove("has-image");
+  placeholder.hidden=false;
+
+  image.onload=()=>{
+   frame.classList.add("has-image");
+   placeholder.hidden=true;
+  };
+
+  image.onerror=()=>{
+   frame.classList.remove("has-image");
+   placeholder.hidden=false;
+   console.error("Artwork failed to load:", image.src);
+  };
+
+  image.alt=`${month.name} 2027 featured artwork from Vidul Art Competition 2026`;
+  image.src=`/assets/artworks/${encodeURIComponent(month.file)}?v=20271126`;
   $("pageNumber").textContent=`${String(pageIndex+1).padStart(2,"0")} / ${TOTAL_PAGES}`;
   $("monthPageNumber").textContent=`${String(pageIndex+1).padStart(2,"0")} / ${TOTAL_PAGES}`;
   $("nextBtn").textContent=`View ${month.name} Calendar ›`;
