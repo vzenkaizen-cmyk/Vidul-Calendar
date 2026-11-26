@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"> 
+<html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#087d50"><meta name="description" content="Vidullanka PLC Digital Calendar 2027">
@@ -8,8 +8,81 @@
 <title>Vidullanka Digital Calendar 2027</title>
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" type="image/png" sizes="192x192" href="assets/app-icon-192.png">
 <link rel="apple-touch-icon" href="assets/app-icon-192.png">
-<link rel="preload" as="image" href="/assets/artworks/january.jpg">
+<link rel="preload" as="image" href="/assets/artworks/january.jpg" fetchpriority="high">
 <link rel="stylesheet" href="styles.css">
+<style id="artwork-display-enhancements">
+/* Artwork-only layout enhancements: keep the existing calendar UI unchanged. */
+.artwork-stage {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 1.46 / 1;
+  overflow: hidden;
+}
+.artwork-stage #artworkImage,
+.artwork-stage .artwork-image {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: contain;
+  object-position: center;
+  image-rendering: auto;
+  backface-visibility: hidden;
+  transform-origin: center;
+  will-change: transform;
+}
+.artwork-stage #artworkImage[style*="display: none"] { display: none !important; }
+.artwork-stage .artwork-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.artwork-stage #artworkImage.motion-drift.artwork-motion-active {
+  animation: artwork-drift 18s ease-in-out infinite alternate;
+}
+.artwork-stage #artworkImage.motion-float.artwork-motion-active {
+  animation: artwork-float 15s ease-in-out infinite alternate;
+}
+.artwork-stage #artworkImage.motion-sway.artwork-motion-active {
+  animation: artwork-sway 17s ease-in-out infinite alternate;
+}
+.artwork-stage #artworkImage.motion-zoom.artwork-motion-active {
+  animation: artwork-zoom 20s ease-in-out infinite alternate;
+}
+.artwork-stage #artworkImage.motion-pan.artwork-motion-active {
+  animation: artwork-pan 19s ease-in-out infinite alternate;
+}
+@keyframes artwork-drift {
+  from { transform: translate3d(0, 1px, 0); filter: saturate(1) brightness(1); }
+  to   { transform: translate3d(0, -1px, 0); filter: saturate(1.06) brightness(1.025); }
+}
+@keyframes artwork-float {
+  from { transform: translate3d(0, 1.5px, 0); filter: saturate(1); }
+  to   { transform: translate3d(0, -1.5px, 0); filter: saturate(1.05); }
+}
+@keyframes artwork-sway {
+  from { transform: translate3d(-1px, 0, 0); filter: saturate(1); }
+  to   { transform: translate3d(1px, 0, 0); filter: saturate(1.05); }
+}
+@keyframes artwork-zoom {
+  from { filter: brightness(1) saturate(1); }
+  to   { filter: brightness(1.035) saturate(1.07); }
+}
+@keyframes artwork-pan {
+  from { transform: translate3d(-1px, 0, 0); filter: saturate(1); }
+  to   { transform: translate3d(1px, 0, 0); filter: saturate(1.05); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .artwork-stage #artworkImage.artwork-motion-active { animation: none !important; }
+}
+</style>
 </head>
 <body>
 <div class="app-shell">
