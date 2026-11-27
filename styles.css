@@ -1,7 +1,8 @@
 :root{
   --green:#087d50;--deep:#07543f;--leaf:#4eaa43;--mint:#e8f5eb;--sky:#e9f6fa;
   --ink:#183f35;--muted:#78958a;--gold:#efa14a;--paper:#fffefa;--line:#dcebe2;
-  font-family:Inter,"Segoe UI",Arial,sans-serif;color:var(--ink);background:#f3f8f5 
+  font-family:Inter,"Segoe UI",Arial,sans-serif;color:var(--ink);background:#f3f8f5
+}
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%;}
 body{min-height:100vh;overflow-x:hidden;background:radial-gradient(ellipse at 4% 12%,#d9f1df 0,transparent 26%),radial-gradient(ellipse at 96% 80%,#d9eff8 0,transparent 28%),linear-gradient(135deg,#f8fbf8,#edf7f4)}
@@ -518,3 +519,103 @@ button{font:inherit;cursor:pointer}
     animation: none !important;
   }
 }
+
+
+/* =========================================================
+   ARTWORK SURROUNDING — decorative side fill
+   Keeps the full original artwork visible and decorates only
+   the unused space on its left and right. No other calendar
+   layout or content is changed.
+   ========================================================= */
+#artworkFrame.artwork-stage {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+  background:
+    radial-gradient(ellipse at 8% 18%, rgba(255,255,255,.92) 0 3%, transparent 15%),
+    radial-gradient(ellipse at 92% 78%, rgba(255,255,255,.88) 0 4%, transparent 16%),
+    linear-gradient(135deg, #bfe8c4 0%, #d9f0c8 24%, #c5e9df 52%, #d8edbd 78%, #b9e3d0 100%) !important;
+}
+
+/* Soft leafy / flower-like decoration behind the artwork. */
+#artworkFrame.artwork-stage::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  display: block !important;
+  pointer-events: none !important;
+  opacity: 1 !important;
+  filter: none !important;
+  transform: none !important;
+  animation: none !important;
+  background-image:
+    radial-gradient(circle at 5% 15%, rgba(255,255,255,.85) 0 5px, transparent 6px),
+    radial-gradient(circle at 8% 11%, rgba(255,190,116,.95) 0 4px, transparent 5px),
+    radial-gradient(circle at 11% 20%, rgba(255,255,255,.75) 0 6px, transparent 7px),
+    radial-gradient(circle at 95% 78%, rgba(255,255,255,.85) 0 5px, transparent 6px),
+    radial-gradient(circle at 91% 83%, rgba(255,190,116,.95) 0 4px, transparent 5px),
+    radial-gradient(circle at 88% 72%, rgba(255,255,255,.78) 0 6px, transparent 7px),
+    radial-gradient(ellipse at 0% 50%, rgba(39,137,69,.22), transparent 32%),
+    radial-gradient(ellipse at 100% 50%, rgba(39,137,69,.22), transparent 32%);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+/* Small floral accents sit at the outer edges, behind the drawing. */
+#artworkFrame.artwork-stage::after {
+  content: "🌿  ✿  🌼";
+  position: absolute !important;
+  z-index: 1 !important;
+  inset: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0 clamp(5px, 1.2vw, 18px) !important;
+  color: #247b43 !important;
+  font-size: clamp(15px, 2vw, 27px) !important;
+  line-height: 1 !important;
+  text-shadow: 0 2px 5px rgba(255,255,255,.8) !important;
+  opacity: .9 !important;
+  pointer-events: none !important;
+}
+
+/* Show the complete drawing at its natural proportions.
+   The decorative background is visible only in any side gaps. */
+#artworkFrame #artworkImage,
+#artworkFrame.artwork-stage.has-image #artworkImage {
+  position: relative !important;
+  z-index: 2 !important;
+  display: block !important;
+  flex: 0 1 auto !important;
+  width: auto !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  background: transparent !important;
+}
+
+#artworkFrame.has-image #artworkPlaceholder {
+  display: none !important;
+}
+
+@media (max-width: 700px) {
+  #artworkFrame.artwork-stage::after {
+    font-size: clamp(13px, 4vw, 20px) !important;
+    padding-inline: 5px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #artworkFrame.artwork-stage::before,
+  #artworkFrame.artwork-stage::after,
+  #artworkFrame #artworkImage {
+    animation: none !important;
+  }
+}
+
