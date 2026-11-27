@@ -4,7 +4,7 @@
   font-family:Inter,"Segoe UI",Arial,sans-serif;color:var(--ink);background:#f3f8f5
 }
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;} 
+html,body{margin:0;min-height:100%;}
 body{min-height:100vh;overflow-x:hidden;background:radial-gradient(ellipse at 4% 12%,#d9f1df 0,transparent 26%),radial-gradient(ellipse at 96% 80%,#d9eff8 0,transparent 28%),linear-gradient(135deg,#f8fbf8,#edf7f4)}
 button{font:inherit;cursor:pointer}
 .app-shell{width:min(1600px,100%);height:100vh;min-height:650px;margin:auto;padding:10px 20px 6px;display:flex;flex-direction:column;overflow:hidden}
@@ -477,6 +477,45 @@ button{font:inherit;cursor:pointer}
 @media (prefers-reduced-motion: reduce) {
   .artwork-page .artwork-stage::before,
   .artwork-page .artwork-stage img {
+    animation: none !important;
+  }
+}
+
+
+
+/* FINAL OVERRIDE — make the complete artwork occupy the entire artwork frame.
+   The image is stretched proportionally to the frame's width and height rather
+   than cropped, so every part of the original drawing remains visible. */
+#artworkFrame.artwork-stage {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  aspect-ratio: auto !important;
+  overflow: hidden !important;
+  display: block !important;
+  background: #e5f1e9 !important;
+}
+
+#artworkFrame #artworkImage,
+#artworkFrame.artwork-stage.has-image #artworkImage {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: fill !important;
+  object-position: center center !important;
+  image-rendering: auto !important;
+}
+
+/* Keep the placeholder hidden only when an artwork has loaded. */
+#artworkFrame.has-image #artworkPlaceholder {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #artworkFrame #artworkImage {
     animation: none !important;
   }
 }
