@@ -426,7 +426,7 @@ button{font:inherit;cursor:pointer}
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-image: url("./vidullanka-floral-background.png");
+  background-image: url("./vidullanka-floral-background-light.png");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -473,4 +473,54 @@ button{font:inherit;cursor:pointer}
   .artwork-page .artwork-caption {
     background: rgba(255, 255, 247, 0.9) !important;
   }
+}
+
+
+/* =========================================================
+   LIGHT VIDULLANKA FLORAL BACKGROUND
+   Keeps the decorative background pale so the children's
+   artwork is clearly separated and the metadata stays legible.
+   No calendar layout or functionality is changed.
+   ========================================================= */
+
+.artwork-page {
+  background: #f5fbf5 !important;
+}
+
+.artwork-page::before {
+  background-image: url("./vidullanka-floral-background-light.png") !important;
+  background-position: center center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  opacity: 1 !important;
+}
+
+/* A clean, soft frame separates the original artwork from the background. */
+.artwork-page .artwork-stage {
+  background: rgba(247, 252, 247, 0.72) !important;
+  border: 7px solid rgba(255, 255, 255, 0.96) !important;
+  border-radius: 15px !important;
+  box-shadow: 0 7px 24px rgba(33, 78, 55, 0.14) !important;
+}
+
+/* Light frosted information strip for artist, age category and description. */
+.artwork-page .artwork-caption {
+  background: rgba(255, 255, 250, 0.96) !important;
+  border: 1px solid rgba(213, 232, 218, 0.96) !important;
+  box-shadow: 0 4px 14px rgba(20, 85, 54, 0.08) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Keep navigation clear against the softened background. */
+.artwork-page .page-controls .page-btn {
+  background: rgba(255, 255, 250, 0.97) !important;
+  border-color: #c8dfd0 !important;
+  color: #176c48 !important;
+}
+
+.artwork-page .page-controls .next-page-btn {
+  background: #07804c !important;
+  border-color: #07804c !important;
+  color: #ffffff !important;
 }
