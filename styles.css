@@ -1,7 +1,7 @@
 :root{
   --green:#087d50;--deep:#07543f;--leaf:#4eaa43;--mint:#e8f5eb;--sky:#e9f6fa;
   --ink:#183f35;--muted:#78958a;--gold:#efa14a;--paper:#fffefa;--line:#dcebe2;
-  font-family:Inter,"Segoe UI",Arial,sans-serif;color:var(--ink);background:#f3f8f5 
+  font-family:Inter,"Segoe UI",Arial,sans-serif;color:var(--ink);background:#f3f8f5
 }
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%;}
@@ -522,11 +522,13 @@ button{font:inherit;cursor:pointer}
 
 
 /* =========================================================
-   ARTWORK SURROUNDING — decorative side fill
-   Keeps the full original artwork visible and decorates only
-   the unused space on its left and right. No other calendar
-   layout or content is changed.
+   REFINED ARTWORK SURROUNDING
+   - Remove the enlarged/blurred duplicate artwork backdrop.
+   - Keep the original artwork centred and uncropped.
+   - Use a calm nature-inspired background in the side gaps.
+   - Decorative details remain behind the original artwork.
    ========================================================= */
+
 #artworkFrame.artwork-stage {
   position: relative !important;
   display: flex !important;
@@ -534,13 +536,14 @@ button{font:inherit;cursor:pointer}
   justify-content: center !important;
   overflow: hidden !important;
   isolation: isolate !important;
+  background-image: none !important;
   background:
-    radial-gradient(ellipse at 8% 18%, rgba(255,255,255,.92) 0 3%, transparent 15%),
-    radial-gradient(ellipse at 92% 78%, rgba(255,255,255,.88) 0 4%, transparent 16%),
-    linear-gradient(135deg, #bfe8c4 0%, #d9f0c8 24%, #c5e9df 52%, #d8edbd 78%, #b9e3d0 100%) !important;
+    radial-gradient(ellipse at 0% 50%, rgba(94, 177, 105, .20), transparent 34%),
+    radial-gradient(ellipse at 100% 50%, rgba(94, 177, 105, .20), transparent 34%),
+    linear-gradient(135deg, #d8efd9 0%, #e5f3d8 24%, #d9f0e9 50%, #e5f2d5 76%, #d4eddf 100%) !important;
 }
 
-/* Soft leafy / flower-like decoration behind the artwork. */
+/* Decorative garden texture — no duplicate artwork image is used here. */
 #artworkFrame.artwork-stage::before {
   content: "" !important;
   position: absolute !important;
@@ -548,44 +551,36 @@ button{font:inherit;cursor:pointer}
   z-index: 0 !important;
   display: block !important;
   pointer-events: none !important;
-  opacity: 1 !important;
+  background-image:
+    radial-gradient(circle at 3% 18%, #fff9 0 3px, transparent 4px),
+    radial-gradient(circle at 6% 14%, #f3c879 0 3px, transparent 4px),
+    radial-gradient(circle at 9% 20%, #fff9 0 3px, transparent 4px),
+    radial-gradient(circle at 4% 82%, #fff9 0 4px, transparent 5px),
+    radial-gradient(circle at 8% 87%, #f3c879 0 3px, transparent 4px),
+    radial-gradient(circle at 12% 80%, #fff9 0 3px, transparent 4px),
+    radial-gradient(circle at 97% 18%, #fff9 0 3px, transparent 4px),
+    radial-gradient(circle at 94% 14%, #f3c879 0 3px, transparent 4px),
+    radial-gradient(circle at 91% 20%, #fff9 0 3px, transparent 4px),
+    radial-gradient(circle at 96% 82%, #fff9 0 4px, transparent 5px),
+    radial-gradient(circle at 92% 87%, #f3c879 0 3px, transparent 4px),
+    radial-gradient(circle at 88% 80%, #fff9 0 3px, transparent 4px),
+    radial-gradient(ellipse at 2% 50%, rgba(42, 126, 62, .16), transparent 28%),
+    radial-gradient(ellipse at 98% 50%, rgba(42, 126, 62, .16), transparent 28%) !important;
+  background-repeat: no-repeat !important;
   filter: none !important;
+  opacity: 1 !important;
   transform: none !important;
   animation: none !important;
-  background-image:
-    radial-gradient(circle at 5% 15%, rgba(255,255,255,.85) 0 5px, transparent 6px),
-    radial-gradient(circle at 8% 11%, rgba(255,190,116,.95) 0 4px, transparent 5px),
-    radial-gradient(circle at 11% 20%, rgba(255,255,255,.75) 0 6px, transparent 7px),
-    radial-gradient(circle at 95% 78%, rgba(255,255,255,.85) 0 5px, transparent 6px),
-    radial-gradient(circle at 91% 83%, rgba(255,190,116,.95) 0 4px, transparent 5px),
-    radial-gradient(circle at 88% 72%, rgba(255,255,255,.78) 0 6px, transparent 7px),
-    radial-gradient(ellipse at 0% 50%, rgba(39,137,69,.22), transparent 32%),
-    radial-gradient(ellipse at 100% 50%, rgba(39,137,69,.22), transparent 32%);
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
 }
 
-/* Small floral accents sit at the outer edges, behind the drawing. */
+/* Remove the old flower emoji overlay; keep the artwork itself unobstructed. */
 #artworkFrame.artwork-stage::after {
-  content: "🌿  ✿  🌼";
-  position: absolute !important;
-  z-index: 1 !important;
-  inset: 0 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  padding: 0 clamp(5px, 1.2vw, 18px) !important;
-  color: #247b43 !important;
-  font-size: clamp(15px, 2vw, 27px) !important;
-  line-height: 1 !important;
-  text-shadow: 0 2px 5px rgba(255,255,255,.8) !important;
-  opacity: .9 !important;
-  pointer-events: none !important;
+  content: none !important;
+  display: none !important;
 }
 
-/* Show the complete drawing at its natural proportions.
-   The decorative background is visible only in any side gaps. */
-#artworkFrame #artworkImage,
+/* Override the earlier high-specificity image rule.
+   Natural aspect ratio is preserved; only the side gaps show the garden colour. */
 #artworkFrame.artwork-stage.has-image #artworkImage {
   position: relative !important;
   z-index: 2 !important;
@@ -598,24 +593,37 @@ button{font:inherit;cursor:pointer}
   object-fit: contain !important;
   object-position: center center !important;
   background: transparent !important;
+  transform: none !important;
+  animation: none !important;
 }
 
-#artworkFrame.has-image #artworkPlaceholder {
+/* Also apply the correct image sizing while the image is loading. */
+#artworkFrame.artwork-stage #artworkImage {
+  width: auto !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+}
+
+/* Do not show the placeholder on top of a successfully loaded image. */
+#artworkFrame.artwork-stage.has-image #artworkPlaceholder {
   display: none !important;
 }
 
 @media (max-width: 700px) {
-  #artworkFrame.artwork-stage::after {
-    font-size: clamp(13px, 4vw, 20px) !important;
-    padding-inline: 5px !important;
+  #artworkFrame.artwork-stage #artworkImage {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   #artworkFrame.artwork-stage::before,
-  #artworkFrame.artwork-stage::after,
-  #artworkFrame #artworkImage {
+  #artworkFrame.artwork-stage #artworkImage {
     animation: none !important;
   }
 }
-
