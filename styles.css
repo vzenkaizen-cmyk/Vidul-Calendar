@@ -3,7 +3,7 @@
   --ink:#183f35;--muted:#78958a;--gold:#efa14a;--paper:#fffefa;--line:#dcebe2;
   font-family:Inter,"Segoe UI",Arial,sans-serif;color:var(--ink);background:#f3f8f5
 }
-*{box-sizing:border-box} 
+*{box-sizing:border-box}
 html,body{margin:0;min-height:100%;}
 body{min-height:100vh;overflow-x:hidden;background:radial-gradient(ellipse at 4% 12%,#d9f1df 0,transparent 26%),radial-gradient(ellipse at 96% 80%,#d9eff8 0,transparent 28%),linear-gradient(135deg,#f8fbf8,#edf7f4)}
 button{font:inherit;cursor:pointer}
@@ -403,5 +403,74 @@ button{font:inherit;cursor:pointer}
 @media (prefers-reduced-motion: reduce) {
   #artworkFrame #artworkImage {
     animation: none !important;
+  }
+}
+
+
+/* =========================================================
+   VIDULLANKA FLORAL + RENEWABLE-ENERGY BACKGROUND
+   Applies only to the artwork page, including the artist,
+   age category, caption and page controls. Existing layout
+   and functionality remain unchanged.
+   ========================================================= */
+
+.artwork-page {
+  position: relative !important;
+  isolation: isolate;
+  background: #eaf7e9 !important;
+}
+
+.artwork-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("./vidullanka-floral-background.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 1;
+}
+
+.artwork-page > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Keep the original artwork clear while allowing the new background
+   to show around the artwork and through the information section. */
+.artwork-page .artwork-stage {
+  background: rgba(238, 250, 239, 0.16) !important;
+}
+
+/* Artist name, age category and quote area */
+.artwork-page .artwork-caption {
+  background: rgba(255, 255, 247, 0.86) !important;
+  border: 1px solid rgba(255, 255, 255, 0.82) !important;
+  box-shadow: 0 5px 18px rgba(20, 85, 54, 0.12);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+
+/* Navigation controls remain readable over the colorful background. */
+.artwork-page .page-controls .page-btn {
+  background: rgba(255, 255, 250, 0.92);
+  border-color: rgba(39, 124, 77, 0.35);
+}
+
+.artwork-page .page-controls .next-page-btn {
+  background: #07804c;
+  border-color: #07804c;
+  color: #fff;
+}
+
+@media (max-width: 700px) {
+  .artwork-page::before {
+    background-position: center center;
+  }
+
+  .artwork-page .artwork-caption {
+    background: rgba(255, 255, 247, 0.9) !important;
   }
 }
