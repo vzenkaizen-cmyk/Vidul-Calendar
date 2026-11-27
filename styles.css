@@ -2,7 +2,7 @@
   --green:#087d50;--deep:#07543f;--leaf:#4eaa43;--mint:#e8f5eb;--sky:#e9f6fa;
   --ink:#183f35;--muted:#78958a;--gold:#efa14a;--paper:#fffefa;--line:#dcebe2;
   font-family:Inter,"Segoe UI",Arial,sans-serif;color:var(--ink);background:#f3f8f5
-} 
+}
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%;}
 body{min-height:100vh;overflow-x:hidden;background:radial-gradient(ellipse at 4% 12%,#d9f1df 0,transparent 26%),radial-gradient(ellipse at 96% 80%,#d9eff8 0,transparent 28%),linear-gradient(135deg,#f8fbf8,#edf7f4)}
@@ -355,275 +355,53 @@ button{font:inherit;cursor:pointer}
 }
 
 
-/* Artwork presentation: fill the wide frame without cropping the original drawing.
-   A soft, enlarged version of the same artwork fills the side areas. */
-.artwork-stage{
-  isolation:isolate;
-  background:#e5f1e9;
-}
-.artwork-stage::before{
-  content:"";
-  position:absolute;
-  inset:-24px;
-  z-index:0;
-  pointer-events:none;
-  background-image:var(--artwork-backdrop);
-  background-position:center;
-  background-size:cover;
-  background-repeat:no-repeat;
-  filter:blur(22px) saturate(.9);
-  transform:scale(1.08);
-  opacity:.52;
-}
-.artwork-stage.has-image::before{
-  opacity:.62;
-}
-.artwork-stage img{
-  display:none;
-  position:relative;
-  z-index:1;
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  background:transparent;
-}
-.artwork-stage.has-image img{
-  display:block;
-}
-.artwork-stage .artwork-placeholder{
-  z-index:2;
-}
+/* =========================================================
+   FINAL ARTWORK FRAME OVERRIDE
+   Fill the complete available artwork area from edge to edge.
+   This affects only the artwork image; all other calendar
+   layout, styling, navigation and functionality stay unchanged.
+   ========================================================= */
 
-/* FINAL ARTWORK FIX
-   Keep the complete original artwork visible while filling the unused
-   left/right space with a softly enlarged version of that same artwork. */
-.artwork-page .artwork-stage {
-  position: relative !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: 100% !important;
-  min-width: 0 !important;
-  overflow: hidden !important;
-  isolation: isolate !important;
-  background: #dcefe3 !important;
-}
-
-/* Side-fill layer: this uses the image URL already supplied by script.js. */
-.artwork-page .artwork-stage::before {
-  content: "" !important;
-  position: absolute !important;
-  inset: -28px !important;
-  z-index: 0 !important;
-  display: block !important;
-  background-image: var(--artwork-backdrop) !important;
-  background-position: center center !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-  filter: blur(18px) saturate(1.12) brightness(1.06) !important;
-  opacity: .88 !important;
-  transform: scale(1.08);
-  animation: artwork-backdrop-motion 24s ease-in-out infinite alternate;
-  pointer-events: none !important;
-}
-
-@keyframes artwork-backdrop-motion {
-  from { transform: scale(1.08) translate3d(-.3%, 0, 0); }
-  to   { transform: scale(1.16) translate3d(.3%, -.2%, 0); }
-}
-
-/* Foreground: preserve the entire drawing and its natural proportions. */
-.artwork-page .artwork-stage img,
-.artwork-page .artwork-stage.has-image img {
+#artworkFrame.artwork-stage {
   display: block !important;
   position: relative !important;
-  z-index: 1 !important;
-  flex: 0 1 auto !important;
   width: 100% !important;
   height: 100% !important;
-  max-width: 100% !important;
-  max-height: 100% !important;
-  object-fit: contain !important;
-  object-position: center center !important;
-  background: transparent !important;
-  image-rendering: auto !important;
-  transform-origin: center center !important;
-  animation: artwork-foreground-motion 22s ease-in-out infinite alternate !important;
-  will-change: transform;
-}
-
-@keyframes artwork-foreground-motion {
-  from { transform: scale(1.002) translate3d(-.12%, .08%, 0); }
-  to   { transform: scale(1.018) translate3d(.12%, -.08%, 0); }
-}
-
-.artwork-page .artwork-stage.has-image::before {
-  opacity: .92 !important;
-}
-
-.artwork-page .artwork-stage .artwork-placeholder {
-  z-index: 2 !important;
-}
-
-@media (max-width: 700px) {
-  .artwork-page .artwork-stage {
-    min-height: 48vh !important;
-  }
-  .artwork-page .artwork-stage img {
-    object-fit: contain !important;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .artwork-page .artwork-stage::before,
-  .artwork-page .artwork-stage img {
-    animation: none !important;
-  }
-}
-
-
-
-/* FINAL OVERRIDE — make the complete artwork occupy the entire artwork frame.
-   The image is stretched proportionally to the frame's width and height rather
-   than cropped, so every part of the original drawing remains visible. */
-#artworkFrame.artwork-stage {
-  width: 100% !important;
-  max-width: none !important;
   min-width: 0 !important;
   min-height: 0 !important;
-  aspect-ratio: auto !important;
   overflow: hidden !important;
-  display: block !important;
-  background: #e5f1e9 !important;
+  box-sizing: border-box !important;
 }
 
 #artworkFrame #artworkImage,
 #artworkFrame.artwork-stage.has-image #artworkImage {
   display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1 !important;
   width: 100% !important;
   height: 100% !important;
   max-width: none !important;
   max-height: none !important;
   object-fit: fill !important;
   object-position: center center !important;
-  image-rendering: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: none !important;
+  animation: none !important;
 }
 
-/* Keep the placeholder hidden only when an artwork has loaded. */
+/* Keep the loading placeholder behind the image and hidden after load. */
+#artworkFrame #artworkPlaceholder {
+  z-index: 2 !important;
+}
+
 #artworkFrame.has-image #artworkPlaceholder {
   display: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
   #artworkFrame #artworkImage {
-    animation: none !important;
-  }
-}
-
-
-/* =========================================================
-   REFINED ARTWORK SURROUNDING
-   - Remove the enlarged/blurred duplicate artwork backdrop.
-   - Keep the original artwork centred and uncropped.
-   - Use a calm nature-inspired background in the side gaps.
-   - Decorative details remain behind the original artwork.
-   ========================================================= */
-
-#artworkFrame.artwork-stage {
-  position: relative !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  overflow: hidden !important;
-  isolation: isolate !important;
-  background-image: none !important;
-  background:
-    radial-gradient(ellipse at 0% 50%, rgba(94, 177, 105, .20), transparent 34%),
-    radial-gradient(ellipse at 100% 50%, rgba(94, 177, 105, .20), transparent 34%),
-    linear-gradient(135deg, #d8efd9 0%, #e5f3d8 24%, #d9f0e9 50%, #e5f2d5 76%, #d4eddf 100%) !important;
-}
-
-/* Decorative garden texture — no duplicate artwork image is used here. */
-#artworkFrame.artwork-stage::before {
-  content: "" !important;
-  position: absolute !important;
-  inset: 0 !important;
-  z-index: 0 !important;
-  display: block !important;
-  pointer-events: none !important;
-  background-image:
-    radial-gradient(circle at 3% 18%, #fff9 0 3px, transparent 4px),
-    radial-gradient(circle at 6% 14%, #f3c879 0 3px, transparent 4px),
-    radial-gradient(circle at 9% 20%, #fff9 0 3px, transparent 4px),
-    radial-gradient(circle at 4% 82%, #fff9 0 4px, transparent 5px),
-    radial-gradient(circle at 8% 87%, #f3c879 0 3px, transparent 4px),
-    radial-gradient(circle at 12% 80%, #fff9 0 3px, transparent 4px),
-    radial-gradient(circle at 97% 18%, #fff9 0 3px, transparent 4px),
-    radial-gradient(circle at 94% 14%, #f3c879 0 3px, transparent 4px),
-    radial-gradient(circle at 91% 20%, #fff9 0 3px, transparent 4px),
-    radial-gradient(circle at 96% 82%, #fff9 0 4px, transparent 5px),
-    radial-gradient(circle at 92% 87%, #f3c879 0 3px, transparent 4px),
-    radial-gradient(circle at 88% 80%, #fff9 0 3px, transparent 4px),
-    radial-gradient(ellipse at 2% 50%, rgba(42, 126, 62, .16), transparent 28%),
-    radial-gradient(ellipse at 98% 50%, rgba(42, 126, 62, .16), transparent 28%) !important;
-  background-repeat: no-repeat !important;
-  filter: none !important;
-  opacity: 1 !important;
-  transform: none !important;
-  animation: none !important;
-}
-
-/* Remove the old flower emoji overlay; keep the artwork itself unobstructed. */
-#artworkFrame.artwork-stage::after {
-  content: none !important;
-  display: none !important;
-}
-
-/* Override the earlier high-specificity image rule.
-   Natural aspect ratio is preserved; only the side gaps show the garden colour. */
-#artworkFrame.artwork-stage.has-image #artworkImage {
-  position: relative !important;
-  z-index: 2 !important;
-  display: block !important;
-  flex: 0 1 auto !important;
-  width: auto !important;
-  height: 100% !important;
-  max-width: 100% !important;
-  max-height: 100% !important;
-  object-fit: contain !important;
-  object-position: center center !important;
-  background: transparent !important;
-  transform: none !important;
-  animation: none !important;
-}
-
-/* Also apply the correct image sizing while the image is loading. */
-#artworkFrame.artwork-stage #artworkImage {
-  width: auto !important;
-  height: 100% !important;
-  max-width: 100% !important;
-  max-height: 100% !important;
-  object-fit: contain !important;
-}
-
-/* Do not show the placeholder on top of a successfully loaded image. */
-#artworkFrame.artwork-stage.has-image #artworkPlaceholder {
-  display: none !important;
-}
-
-@media (max-width: 700px) {
-  #artworkFrame.artwork-stage #artworkImage {
-    width: 100% !important;
-    height: auto !important;
-    max-width: 100% !important;
-    max-height: 100% !important;
-    object-fit: contain !important;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  #artworkFrame.artwork-stage::before,
-  #artworkFrame.artwork-stage #artworkImage {
     animation: none !important;
   }
 }
